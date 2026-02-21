@@ -33,6 +33,7 @@ network:
 safe-outputs:
   create-discussion:
     close-older-discussions: false
+    category: "アジェンダ"
   update-discussion:
     max: 1
 ---

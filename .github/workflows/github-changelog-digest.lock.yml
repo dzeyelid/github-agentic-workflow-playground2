@@ -23,7 +23,7 @@
 #
 # GitHub Changelog の RSS フィードを定期取得し、カテゴリ別に整理した月次ダイジェストを GitHub Discussions に自動投稿する
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"9a4a257cb59d569335d61fedcc88152297bcd6a051373fc22208c4e9942b6339","compiler_version":"v0.47.5"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"a0ec0d0ef62a87b81cdf7f153fba8e3c0946cb0e3fcf2e2a1b0c164d9050e244","compiler_version":"v0.47.5"}
 
 name: "GitHub Changelog Digest"
 "on":
@@ -399,7 +399,7 @@ jobs:
           cat > /opt/gh-aw/safeoutputs/tools.json << 'GH_AW_SAFE_OUTPUTS_TOOLS_EOF'
           [
             {
-              "description": "Create a GitHub discussion for announcements, Q\u0026A, reports, status updates, or community conversations. Use this for content that benefits from threaded replies, doesn't require task tracking, or serves as documentation. For actionable work items that need assignment and status tracking, use create_issue instead. CONSTRAINTS: Maximum 1 discussion(s) can be created.",
+              "description": "Create a GitHub discussion for announcements, Q\u0026A, reports, status updates, or community conversations. Use this for content that benefits from threaded replies, doesn't require task tracking, or serves as documentation. For actionable work items that need assignment and status tracking, use create_issue instead. CONSTRAINTS: Maximum 1 discussion(s) can be created. Discussions will be created in category \"アジェンダ\".",
               "inputSchema": {
                 "additionalProperties": false,
                 "properties": {
@@ -1141,7 +1141,7 @@ jobs:
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           GH_AW_AGENT_OUTPUT: ${{ env.GH_AW_AGENT_OUTPUT }}
-          GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: "{\"create_discussion\":{\"expires\":168,\"fallback_to_issue\":true,\"max\":1},\"missing_data\":{},\"missing_tool\":{},\"update_discussion\":{\"max\":1}}"
+          GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: "{\"create_discussion\":{\"category\":\"アジェンダ\",\"expires\":168,\"fallback_to_issue\":true,\"max\":1},\"missing_data\":{},\"missing_tool\":{},\"update_discussion\":{\"max\":1}}"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
